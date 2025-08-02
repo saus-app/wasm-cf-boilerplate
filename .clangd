@@ -1,0 +1,2 @@
+CompileFlags:
+  Remove: [-gsource-map, -sSUPPORT_LONGJMP=0]

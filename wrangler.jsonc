@@ -1,0 +1,30 @@
+/**
+ * For more details on how to configure Wrangler, refer to:
+ * https://developers.cloudflare.com/workers/wrangler/configuration/
+ */
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "wasm-cf-boilerplate",
+	"main": "src/worker.js",
+	"compatibility_date": "2025-07-02",
+	"compatibility_flags": [
+		"nodejs_compat",
+		"global_fetch_strictly_public"
+	],
+	"observability": {
+		"enabled": true
+	},
+	"assets": {
+		"directory": "./public",
+		"binding": "public"
+	},
+    /*/
+	"kv_namespaces": [
+		{
+			"binding": "<FILL>",
+			"id": "<FILL>",
+			"preview_id": "<FILL>",
+		}
+	],
+    //*/
+}

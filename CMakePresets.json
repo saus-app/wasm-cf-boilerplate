@@ -1,0 +1,103 @@
+{
+    "version": 3,
+    "configurePresets": [
+        {
+            "name": "base",
+            "hidden": true,
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "environment": {
+                "VERSION": "0.1"
+            },
+            "cacheVariables": {
+                "CMAKE_EXPORT_COMPILE_COMMANDS": true
+            },
+            "warnings": {
+                "deprecated": false
+            }
+        },
+        {
+            "name": "debug",
+            "displayName": "",
+            "hidden": true,
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "release",
+            "displayName": "",
+            "hidden": true,
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "relwithdebinfo",
+            "displayName": "",
+            "hidden": true,
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+            }
+        },
+        {
+            "name": "minsizerel",
+            "displayName": "",
+            "hidden": true,
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "MinSizeRel"
+            }
+        },
+        {
+            "name": "wasm",
+            "hidden": true,
+            "inherits": "base",
+            "environment": {},
+            "cacheVariables": {
+                "CMAKE_CROSSCOMPILING_EMULATOR": "/usr/local/opt/node/bin/node"
+            },
+            "toolchainFile": "/usr/local/Cellar/emscripten/4.0.10/libexec/cmake/Modules/Platform/Emscripten.cmake"
+        },
+        {
+            "name": "debug-wasm-cf",
+            "displayName": "Debug WASM (for Cloudflare)",
+            "description": "",
+            "cacheVariables": {
+                "WASM_ENVIRONMENT": "node,worker"
+            },
+            "inherits": ["wasm", "debug"]
+        },
+        {
+            "name": "release-wasm-cf",
+            "displayName": "Release WASM (for Cloudflare)",
+            "description": "",
+            "cacheVariables": {
+                "WASM_ENVIRONMENT": "worker"
+            },
+            "inherits": ["wasm", "release"]
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "wasm-demo",
+            "hidden": true,
+            "description": "Build the WASM demo binary",
+            "targets": ["WasmDemo"],
+            "nativeToolOptions": ["-v"],
+            "environment": {
+                "EMCC_DEBUG": "0"
+            }
+        },
+        {
+            "name": "debug-wasm-demo",
+            "configurePreset": "debug-wasm-cf",
+            "inherits": ["wasm-demo"]
+        },
+        {
+            "name": "release-wasm-demo",
+            "configurePreset": "release-wasm-cf",
+            "inherits": ["wasm-demo"]
+        }
+    ],
+    "testPresets": []
+}

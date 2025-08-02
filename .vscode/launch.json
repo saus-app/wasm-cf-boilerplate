@@ -1,0 +1,22 @@
+// If wanting to migrate c++ debugging to here, see: https://vector-of-bool.github.io/docs/vscode-cmake-tools/debugging.html#debugging-with-cmake-tools-and-launch-json
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "WASM harness",
+            "env": {
+                "PWD": "${workspaceFolder}/src"
+            },
+            "runtimeArgs": [
+                "--experimental-wasm-stack-switching",
+                "--experimental-wasm-jspi"
+            ],
+            "localRoot": "${workspaceFolder}/src",
+            "program": "harness.js",
+            "args": [],
+            "console": "integratedTerminal"
+        }
+    ]
+}

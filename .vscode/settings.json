@@ -1,0 +1,5 @@
+{
+    "cmake.copyCompileCommands": "${workspaceFolder}/build/compile_commands.json",
+    "cmake.skipConfigureIfCachePresent": false,
+    "cmake.useCMakePresets": "always",
+}
