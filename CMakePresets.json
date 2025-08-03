@@ -56,7 +56,7 @@
             "cacheVariables": {
                 "CMAKE_CROSSCOMPILING_EMULATOR": "/usr/local/opt/node/bin/node"
             },
-            "toolchainFile": "/usr/local/Cellar/emscripten/4.0.10/libexec/cmake/Modules/Platform/Emscripten.cmake"
+            "toolchainFile": "/usr/local/opt/emscripten/libexec/cmake/Modules/Platform/Emscripten.cmake"
         },
         {
             "name": "debug-wasm-cf",
